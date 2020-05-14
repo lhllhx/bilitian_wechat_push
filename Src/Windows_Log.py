@@ -87,4 +87,4 @@ class Logger(object):
         time.sleep(0.1)
         set_color(FOREGROUND_WHITE)
 
-Log = Logger('./Log/BiliBiliHelper.log',level=config["Log"]["LOG_LEVEL"])
+Log = Logger('./Log1/BiliBiliHelper.log',level=config["Log"]["LOG_LEVEL"])

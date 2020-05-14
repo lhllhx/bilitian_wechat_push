@@ -66,4 +66,4 @@ class Loggger():
         str_time = time.strftime("[%Y-%m-%d %H:%M:%S] ", time.localtime())
         return str_time
 
-Log = Loggger(os.getcwd()+"/Log/BiliBiliHelper-"+time.strftime("%Y%m%d", time.localtime())+".log")
+Log = Loggger(os.getcwd()+"/Log1/BiliBiliHelper-"+time.strftime("%Y%m%d", time.localtime())+".log")
