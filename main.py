@@ -50,7 +50,7 @@ while 1:
         continue
     if tianid2 == '':
         data_write(tianid1)
-        data1=time.strftime("时间%Hh%Mm%Ss  内容：", time.localtime())+str(tian['data']['list'][0]['award_name'])
+        data1="时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容："+str(tian['data']['list'][0]['award_name'])
         data2=tian['data']['list'][0]
         url='https://sc.ftqq.com/'+SCKEY+'.send?text='+data1+'&desp='+str(tian['data']['list'][0])
         request1 = requests.post(url)
@@ -61,7 +61,7 @@ while 1:
         sleep(600)
         continue
     data_write(tianid1)
-    data1=time.strftime("时间%Hh%Mm%Ss  内容：", time.localtime())+str(tian['data']['list'][0]['award_name'])
+    data1="时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容："+str(tian['data']['list'][0]['award_name'])
     data2=tian['data']['list'][0]
     url='https://sc.ftqq.com/'+SCKEY+'.send?text='+data1+'&desp='+str(tian['data']['list'][0])
     request1 = requests.get(url)
