@@ -28,8 +28,12 @@ def sign():
     request1 = requests.get(url, headers=headers)
     print(request1.text)
     r=json.loads(request1.text)
-    print(r['data']['list'][0]['award_name'])
-    return r
+    try:
+        print(r['data']['list'][0]['award_name'])
+    except:
+        return r
+    else:
+        return r
 
 
 Log.info("\n======START======"+str(time.asctime())+"============\n")
@@ -40,35 +44,36 @@ csrf = config['Token']['CSRF']
 Log.info(str(csrf))
 cookie = config['Token']['COOKIE']
 SCKEY = config['SCKEY']['SCKEY']
+user_name = config['Account']['BILIBILI_USER']
 Log.info(str(cookie))
 while 1:
     tian=sign()
-    tianid1=str(tian['data']['list'][0]['id'])
+    tianid1=""
+    try:
+        tianid1=str(tian['data']['list'][0]['id'])
+    except:
+        sleep(1200)
+        continue
     tianid2=data_read()
     if tianid1 == '':
-        sleep(600)
+        sleep(1200)
         continue
     if tianid2 == '':
         data_write(tianid1)
-        data1="时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容："+str(tian['data']['list'][0]['award_name'])
+        data1=user_name+"时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容"+str(tian['data']['list'][0]['award_name'])
         data2=tian['data']['list'][0]
         url='https://sc.ftqq.com/'+SCKEY+'.send?text='+data1+'&desp='+str(tian['data']['list'][0])
         request1 = requests.post(url)
         print(request1.text)
-        sleep(600)
+        sleep(1200)
         continue
     if(tianid1==tianid2):
-        sleep(600)
+        sleep(1200)
         continue
     data_write(tianid1)
-    data1="时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容："+str(tian['data']['list'][0]['award_name'])
+    data1=user_name+"时间"+time.strftime("%Hh%Mm%Ss", time.localtime())+"内容"+str(tian['data']['list'][0]['award_name'])
     data2=tian['data']['list'][0]
     url='https://sc.ftqq.com/'+SCKEY+'.send?text='+data1+'&desp='+str(tian['data']['list'][0])
     request1 = requests.get(url)
     print(request1.text)
-    sleep(600)
-
-
-
-
-    
+    sleep(1200)

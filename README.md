@@ -5,7 +5,7 @@
 首先需要在http://sc.ftqq.com/3.version   注册申请SCKEY
 然后在./conf/BiliBiliHelper.conf中填写bilibili账号密码 和 sckey
 
-项目首次运行时会自动推送最后一次中奖信息 默认十分钟检测一次
+项目首次运行时会自动推送最后一次中奖信息 默认二十分钟检测一次
 
 ## 环境依赖
 |Requirement|
